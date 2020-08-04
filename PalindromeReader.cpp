@@ -15,42 +15,44 @@ int StringCounter(string PalindromeString){
   return counter;
 }
 
-int PalindromeReader(string PalindromeString, int StringSize, int SizeComparison[2]){
-  int ArrayPos = 0;
-  int Iterator = 1;
-  int PalindromeSize = 0;
+string PalindromeReader(string PalindromeString, int StringSize, int SizeComparison[2]){
+  int arrayPos = 0;
+  int palindromeIterator = 1;
+  int palindromeCharacterCounter = 0;
 
-  while (ArrayPos < StringSize){
+  while (arrayPos < StringSize){
     //used to find all cases of palindromes.
-    if (PalindromeString [ArrayPos - Iterator] == PalindromeString [ArrayPos + Iterator] || PalindromeString [ArrayPos - Iterator] == PalindromeString [ArrayPos + (Iterator + 1)]){
+    if (PalindromeString [arrayPos - palindromeIterator] == PalindromeString [arrayPos + palindromeIterator] || PalindromeString [arrayPos - palindromeIterator] == PalindromeString [arrayPos + (palindromeIterator + 1)]){
 
-      Iterator++;
-      PalindromeSize++;
+      palindromeIterator++;
+      palindromeCharacterCounter++;
       }
     else{
-      //use to store current arraypos and palindromesize.
-      if (PalindromeSize > SizeComparison[0]){
-        SizeComparison [0] = PalindromeSize;
-        SizeComparison [1] = ArrayPos;  
+      //use to store current arrayPos and palindromeCharacterCounter.
+      if (palindromeCharacterCounter > SizeComparison[0]){
+        SizeComparison [0] = palindromeCharacterCounter;
+        SizeComparison [1] = arrayPos;  
       }
-            if (PalindromeSize > SizeComparison[0]){
-            SizeComparison [0] = PalindromeSize;
-            SizeComparison [1] = ArrayPos;     
+            if (palindromeCharacterCounter > SizeComparison[0]){
+            SizeComparison [0] = palindromeCharacterCounter;
+            SizeComparison [1] = arrayPos;     
             }     
-      PalindromeSize = 0;
-      Iterator = 1;
-      ArrayPos++;
+      palindromeCharacterCounter = 0;
+      palindromeIterator = 1;
+      arrayPos++;
     }
   }
   //printlargest
   int endpoint = SizeComparison[0] + SizeComparison[1];
-  for (int i = 0; i < ((SizeComparison[0]*2)+1); i++){
-    cout << PalindromeString[endpoint];
+  string output;
+  int palindromeSize = ((SizeComparison[0]*2)+1);
+  for (int i = 0; i < palindromeSize; i++){
+    PalindromeString[endpoint] + PalindromeString[endpoint - 1];
     endpoint--;
   }
   
 
-  return 0;
+  return output;
 }
 int main(){
   
